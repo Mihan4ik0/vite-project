@@ -1,44 +1,44 @@
-/* src/components/Header/Header.css */
-
 .header {
-    display: flex;
-    align-items: center;
-    background-color: #9E1300;
-    height: 109px;
-    padding: 0 40px;
-    box-sizing: border-box;
-  }
-  
-  .header__logo {
-    width: 90px;
-    height: 90px;
-    background-color: #D9D9D9;
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 25px;
-  }
-  
-  .header__nav {
-    display: flex;
-    gap: 20px;
-  }
-  
-  .header__button {
-    width: 210px;
-    height: 90px;
-    background-color: #D9D9D9;
-    border: none;
-    border-radius: 15px;
-  }
-  
-  .header__button--cta {
-    margin-left: auto;
-    width: 325px;
-    height: 90px;
-    background-color: #D9D9D9;
-    border: none;
-    border-radius: 15px;
-  }
-  
+  display: flex;
+  align-items: center;
+  background-color: #9E1300;
+  height: 109px;
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
+.header__logo {
+  width: 90px;
+  height: 90px;
+  background-color: #D9D9D9;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 25px;
+  cursor: pointer;
+}
+
+.header__nav {
+  display: flex;
+  gap: 20px;
+}
+
+.header__button {
+  width: 210px;
+  height: 90px;
+  background-color: #D9D9D9;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.header__search-input {
+  margin-left: auto; /* Выравнивает по правому краю */
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 15px;
+  border: 1px solid #ccc;
+  height: 50px;
+  width: 325px;
+}
