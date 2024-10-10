@@ -1,0 +1,41 @@
+/* Общие стили для кнопки */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Цветовые варианты */
+  .btn-blue {
+    background-color: blue;
+    color: white;
+  }
+  
+  .btn-red {
+    background-color: red;
+    color: white;
+  }
+  
+  /* Варианты размеров */
+  .btn-small {
+    font-size: 14px;
+    padding: 5px 10px;
+  }
+  
+  .btn-medium {
+    font-size: 16px;
+  }
+  
+  .btn-large {
+    font-size: 18px;
+    padding: 15px 30px;
+  }
+  
+  /* Hover-эффект для кнопки */
+  .btn:hover {
+    opacity: 0.9;
+  }
+  
