@@ -1,6 +1,5 @@
 // src/components/Icon/Icon.tsx
 
-import React from "react";
 
 function Icon() {
   return (
