@@ -1,29 +1,17 @@
-import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
-import Header from './components/Header/Header';
-import MainContent from './components/MainContent/MainContent';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import Quotes from './pages/Quotes';
 
-const HomePage = () => {
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
-  const searchQuery = searchParams.get('search');
-
-  return (
-    <div>
-      <Header />
-      <MainContent />
-      {searchQuery && <p>Search results for: {searchQuery}</p>}
-    </div>
-  );
-};
-
-const App = () => {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-      </Routes>
-    </Router>
-  );
-};
+const App: React.FC = () => (
+  <Router>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/about" element={<HomePage />} />
+      <Route path="/list-quotes" element={<Quotes />} />
+      <Route path="/random-quotes" element={<div>Random Quotes Page (Coming Soon)</div>} />
+    </Routes>
+  </Router>
+);
 
 export default App;
