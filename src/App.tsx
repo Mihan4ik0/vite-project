@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import Quotes from './pages/Quotes';
+import RandomPage from './pages/RandomPage';
 
 const App: React.FC = () => (
   <Router>
@@ -9,7 +10,7 @@ const App: React.FC = () => (
       <Route path="/" element={<HomePage />} />
       <Route path="/about" element={<HomePage />} />
       <Route path="/list-quotes" element={<Quotes />} />
-      <Route path="/random-quotes" element={<div>Random Quotes Page (Coming Soon)</div>} />
+      <Route path="/random-quotes" element={<RandomPage />}/>
     </Routes>
   </Router>
 );

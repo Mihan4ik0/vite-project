@@ -30,6 +30,9 @@
 }
 
 .action-button {
+  display: flex; /* Добавлено для выравнивания содержимого */
+  align-items: center; /* Центрируем по вертикали */
+  justify-content: center; /* Центрируем по горизонтали */
   flex: 1; /* Каждая кнопка занимает равную долю доступного пространства */
   height: 65px;
   background-color: #D9D9D9;
@@ -42,4 +45,10 @@
 
 .action-button:hover {
   background-color: #c4c4c4;
+}
+
+.author-button:disabled {
+  color: #333;
+  background-color: #D9D9D9;
+  cursor: default;
 }

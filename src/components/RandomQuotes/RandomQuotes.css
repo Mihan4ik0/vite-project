@@ -1,0 +1,99 @@
+/* src/components/RandomQuotes/RandomQuotes.css */
+.random-quotes {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 40px;
+    width: 100%;
+    box-sizing: border-box;
+    gap: 20px;
+  }
+  
+  .quote-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1;
+  }
+  
+  .quote-block {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .quote-content-random {
+    background-color: #D9D9D9;
+    border-radius: 20px;
+    padding: 30px;
+    min-height: 520px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .quote-text {
+    font-size: 24px;
+    text-align: center;
+    color: #333;
+  }
+  
+  .quote-actions {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .action-button {
+    height: 53px;
+    background-color: #D9D9D9;
+    border: none;
+    border-radius: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .action-button:hover {
+    background-color: #c4c4c4;
+  }
+  
+  .author-block {
+    margin-top: 20px;
+  }
+  
+  .author-button {
+    background-color: #D9D9D9;
+    border: none;
+    border-radius: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px;
+    color: #333;
+  }
+  
+  .author-button:disabled {
+    cursor: default;
+  }
+  
+  .illustration-block {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .illustration-content {
+    width: 100%;
+    height: auto;
+  }
+  
+  .illustration-image {
+    width: 100%;
+    max-height: calc(100vh - 80px);
+    object-fit: contain;
+  }
+  

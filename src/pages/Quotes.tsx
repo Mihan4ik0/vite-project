@@ -2,26 +2,32 @@ import React, { useState, useEffect } from 'react';
 import Header from '../components/Header/Header';
 import QuoteBlock from '../components/QuoteBlock/QuoteBlock';
 import FontPreview from '../components/FontPreview/FontPreview';
-import { initialQuotes, Quote } from '../data/quotes';
 import './Quotes.css';
 
-// Симуляция загрузки данных
-const fetchQuotes = (start: number, count: number): Promise<Quote[]> => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      const newQuotes = initialQuotes.slice(start, start + count);
-      resolve(newQuotes);
-    }, 500); // Имитация задержки сети
-  });
+interface Quote {
+  id: number;
+  quote: string;
+  author: string;
+}
+
+const fetchQuotes = async (skip: number, limit: number): Promise<Quote[]> => {
+  const response = await fetch(`https://dummyjson.com/quotes?skip=${skip}&limit=${limit}`);
+  const data = await response.json();
+  return data.quotes.map((item: any) => ({
+    id: item.id,
+    quote: item.quote,
+    author: item.author
+  }));
 };
 
 const Quotes: React.FC = () => {
   const [quotes, setQuotes] = useState<Quote[]>([]);
-  const [hasMore, setHasMore] = useState(true); // Флаг для определения, есть ли еще данные
-  const [isLoading, setIsLoading] = useState(false); // Флаг для предотвращения повторной загрузки
+  const [hasMore, setHasMore] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const [page, setPage] = useState(0);
+  const limit = 3; // Количество цитат за один запрос
 
   useEffect(() => {
-    // Загрузка первых данных при монтировании
     loadMoreQuotes();
   }, []);
 
@@ -30,11 +36,13 @@ const Quotes: React.FC = () => {
 
     setIsLoading(true);
 
-    const newQuotes = await fetchQuotes(quotes.length, 3); // Загружаем 3 новых цитаты
+    const newQuotes = await fetchQuotes(page * limit, limit);
     setQuotes((prev) => [...prev, ...newQuotes]);
 
-    if (newQuotes.length < 3) {
-      setHasMore(false); // Если новых данных меньше ожидаемого количества
+    if (newQuotes.length < limit) {
+      setHasMore(false);
+    } else {
+      setPage((prev) => prev + 1);
     }
 
     setIsLoading(false);
@@ -50,12 +58,11 @@ const Quotes: React.FC = () => {
   };
 
   useEffect(() => {
-    // Подписываемся на событие прокрутки
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [isLoading, hasMore]); // Обновляем подписку, если меняются зависимости
+  }, [isLoading, hasMore]);
 
   return (
     <div>
@@ -64,11 +71,12 @@ const Quotes: React.FC = () => {
         <div className="quotes-container">
           {quotes.map((quote) => (
             <div className="content-row" key={quote.id}>
-              <QuoteBlock quote={quote.text} author={quote.author} />
+              <QuoteBlock quote={quote.quote} author={quote.author} />
               <FontPreview />
             </div>
           ))}
           {isLoading && <div>Loading...</div>}
+          {!hasMore && <div>No more quotes available</div>}
         </div>
       </div>
     </div>

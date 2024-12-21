@@ -1,4 +1,3 @@
-// src/components/QuoteBlock/QuoteBlock.tsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './QuoteBlock.css';
@@ -11,10 +10,6 @@ interface QuoteBlockProps {
 const QuoteBlock: React.FC<QuoteBlockProps> = ({ quote, author }) => {
   const [fontFamily, setFontFamily] = useState('Arial');
   const navigate = useNavigate();
-
-  const handleAuthorClick = () => {
-    navigate(`/author/${encodeURIComponent(author)}`);
-  };
 
   const handleFontChange = () => {
     const fonts = [
@@ -39,11 +34,15 @@ const QuoteBlock: React.FC<QuoteBlockProps> = ({ quote, author }) => {
         <p className="quote-text">{quote}</p>
       </div>
       <div className="quote-actions">
-        <button onClick={handleAuthorClick} className="action-button">
-          Author
+        <button className="action-button author-button" disabled>
+          {author ? `Author: ${author}` : 'Author: Unknown'}
         </button>
-        <button onClick={handleFontChange} className="action-button">
-          Change Font
+        <button
+          onClick={handleFontChange}
+          className="action-button"
+          style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+        >
+          Change Font: {fontFamily}
         </button>
       </div>
     </div>
