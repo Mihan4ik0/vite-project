@@ -1,9 +1,12 @@
+// src/data/quotes.ts
+
 export interface Quote {
   id: number;
   text: string;
   author: string;
 }
 
+// Массив с цитатами
 export const initialQuotes: Quote[] = [
   {
     id: 1,

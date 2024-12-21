@@ -1,3 +1,4 @@
+// src/components/QuoteBlock/QuoteBlock.tsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './QuoteBlock.css';
@@ -16,7 +17,17 @@ const QuoteBlock: React.FC<QuoteBlockProps> = ({ quote, author }) => {
   };
 
   const handleFontChange = () => {
-    const fonts = ['Arial', 'Times New Roman', 'Georgia', 'Verdana'];
+    const fonts = [
+      'Arial',
+      'Times New Roman',
+      'Georgia',
+      'Verdana',
+      'Courier New',
+      'Tahoma',
+      'Impact',
+      'Comic Sans MS',
+      'Lucida Console',
+    ];
     const currentIndex = fonts.indexOf(fontFamily);
     const nextIndex = (currentIndex + 1) % fonts.length;
     setFontFamily(fonts[nextIndex]);
